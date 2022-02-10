@@ -17,7 +17,7 @@ public class Snowball : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetAxisRaw("Shoot") != 0 && GameManager.snowballs > 0 && !thrown)
+        if((Input.GetAxisRaw("Shoot") != 0 || Input.GetMouseButtonDown(0)) && GameManager.snowballs > 0 && !thrown)
             Throw();
 
         if(transform.localScale.x < 0.75f && thrown)
