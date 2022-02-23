@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class SpriteAnimator : MonoBehaviour
 {
-    public float framesPerSecond;
+    public float secondsPerFrame;
     public Sprite[] sprites;
 
     new private SpriteRenderer renderer;
@@ -18,9 +18,9 @@ public class SpriteAnimator : MonoBehaviour
 
     private void Update()
     {
-        if(timer >= framesPerSecond)
+        if(timer >= secondsPerFrame)
         {
-            timer -= framesPerSecond;
+            timer -= secondsPerFrame;
 
             if(index < sprites.Length - 1)
                 index++;

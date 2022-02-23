@@ -12,20 +12,15 @@ public class Penguin : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         renderer = GetComponent<SpriteRenderer>();
-        rigidbody.angularVelocity = 360;
-
     }
 
     private void Update()
     {
-        if(transform.position.y < 0.5f)
+        if(transform.position.y < 0.5f && !GameManager.gameOver)
             SetRandomPosition();
 
         if(!hit)
             transform.rotation = Quaternion.Euler(0, 0, (rigidbody.velocity.x < 0 ? Vector2.Angle(Vector2.up, rigidbody.velocity) : -Vector2.Angle(Vector2.up, rigidbody.velocity)) + 90);
-
-        Debug.DrawLine(transform.position, transform.position + Vector3.up, Color.blue);
-        Debug.DrawLine(transform.position, transform.position + (Vector3)rigidbody.velocity.normalized, Color.red);
     }
 
     private void SetRandomPosition()
@@ -49,11 +44,14 @@ public class Penguin : MonoBehaviour
     {
         hit = true;
         streak++;
-        GameManager.score += 100 * streak;
+        GameManager.score += 1 * streak;
         rigidbody.angularVelocity = 720;
         var randomXVelocity = Random.Range(1f, 2f);
         if(Random.value > 0.5f)
             randomXVelocity *= -1;
         rigidbody.velocity = new Vector2(randomXVelocity, Random.Range(6f, 8f));
+
+        PlayerPrefs.SetInt("highScore", GameManager.score);
+        PlayerPrefs.Save();
     }
 }

@@ -17,13 +17,15 @@ public class Snowball : MonoBehaviour
 
     private void Update()
     {
-        if((Input.GetAxisRaw("Shoot") != 0 || Input.GetMouseButtonDown(0)) && GameManager.snowballs > 0 && !thrown)
+        if(Input.GetMouseButtonDown(0) && GameManager.snowballs > 0 && !thrown)
             Throw();
 
-        if(transform.localScale.x < 0.75f && thrown)
-            Break();
-        else if(thrown)
+        if(thrown)
+            if(transform.localScale.x < 0.75f)
+                Break();
+        else
             transform.localScale -= 1.875f * Time.deltaTime * Vector3.one;
+            
 
         collider.enabled = transform.localScale.x < 1.25f && transform.localScale.x > 0.75f && thrown;
     }
@@ -55,13 +57,14 @@ public class Snowball : MonoBehaviour
     {
         thrown = true;
         GameManager.snowballs--;
+
+        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + Vector3.forward;
+        transform.rotation = Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f));
         transform.localScale = Vector3.one * 3;
+
         rigidbody.velocity = Vector2.up * 6;
         rigidbody.angularVelocity = Random.Range(45f, 90f);
-        transform.rotation = Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f));
         if(Random.value > 0.5f)
             rigidbody.angularVelocity *= -1;
-        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector3(transform.position.x, transform.position.y, 1);
     }
 }
