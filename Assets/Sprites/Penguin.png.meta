@@ -104,15 +104,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Penguin_0
+      name: Penguin1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
         height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -125,15 +125,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Penguin_1
+      name: Penguin2
       rect:
         serializedVersion: 2
         x: 16
         y: 0
         width: 16
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 8
+      alignment: 9
+      pivot: {x: 0.5, y: 0.375}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -146,15 +146,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Penguin_2
+      name: Penguin3
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 16
-        height: 10
+        height: 6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,9 +177,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Penguin_0: -1998473715
-      Penguin_2: 484846718
-      Penguin_1: 573128101
+      Penguin1: -1998473715
+      Penguin2: 573128101
+      Penguin3: 484846718
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1,12 +1,11 @@
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
 public class SpriteAnimator : MonoBehaviour
 {
     public float secondsPerFrame;
     public Sprite[] sprites;
 
-    new private SpriteRenderer renderer;
+    private SpriteRenderer renderer;
 
     private float timer;
     private int index;
@@ -14,6 +13,7 @@ public class SpriteAnimator : MonoBehaviour
     private void Awake()
     {
         renderer = GetComponent<SpriteRenderer>();
+        renderer.sprite = sprites[0];
     }
 
     private void Update()
@@ -21,15 +21,10 @@ public class SpriteAnimator : MonoBehaviour
         if(timer >= secondsPerFrame)
         {
             timer -= secondsPerFrame;
-
-            if(index < sprites.Length - 1)
-                index++;
-            else
-                index = 0;
-
+            index = index < sprites.Length - 1 ? index += 1 : 0;
             renderer.sprite = sprites[index];
         }
 
-        timer += Time.deltaTime; 
+        timer += Time.deltaTime;
     }
 }

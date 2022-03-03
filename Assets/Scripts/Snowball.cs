@@ -6,8 +6,8 @@ public class Snowball : MonoBehaviour
 
     private bool thrown;
 
-    new private Rigidbody2D rigidbody;
-    new private Collider2D collider;
+    private Rigidbody2D rigidbody;
+    private Collider2D collider;
 
     private void Awake()
     {
@@ -21,13 +21,14 @@ public class Snowball : MonoBehaviour
             Throw();
 
         if(thrown)
+        {
             if(transform.localScale.x < 0.75f)
                 Break();
-        else
-            transform.localScale -= 1.875f * Time.deltaTime * Vector3.one;
-            
+            else
+                transform.localScale -= 1.875f * Time.deltaTime * Vector3.one;
 
-        collider.enabled = transform.localScale.x < 1.25f && transform.localScale.x > 0.75f && thrown;
+            collider.enabled = transform.localScale.x < 1.25f && transform.localScale.x > 0.75f;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -45,7 +46,7 @@ public class Snowball : MonoBehaviour
 
         foreach(var particle in particles)
         {
-            particle.transform.position = transform.position;
+            particle.transform.position = transform.position + Vector3.forward;
             particle.velocity = new Vector2(Random.Range(-1f, 1f), Random.Range(0f, 1f));
             particle.angularVelocity = Random.Range(-90f, 90f);
         }

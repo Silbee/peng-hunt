@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Penguin : MonoBehaviour
 {
-    new private Rigidbody2D rigidbody;
-    new private SpriteRenderer renderer;
+    private Rigidbody2D rigidbody;
+    private SpriteRenderer renderer;
 
     private bool hit;
     private byte streak;
@@ -44,14 +44,14 @@ public class Penguin : MonoBehaviour
     {
         hit = true;
         streak++;
+
         GameManager.score += 1 * streak;
+
         rigidbody.angularVelocity = 720;
         var randomXVelocity = Random.Range(1f, 2f);
         if(Random.value > 0.5f)
             randomXVelocity *= -1;
-        rigidbody.velocity = new Vector2(randomXVelocity, Random.Range(6f, 8f));
 
-        PlayerPrefs.SetInt("highScore", GameManager.score);
-        PlayerPrefs.Save();
+        rigidbody.velocity = new Vector2(randomXVelocity, Random.Range(6f, 8f));
     }
 }

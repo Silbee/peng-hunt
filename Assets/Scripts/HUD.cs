@@ -61,6 +61,12 @@ public class HUD : MonoBehaviour
     private void DisplayGameOver()
     {
         gameOverContainer.SetActive(true);
+
+        if(GameManager.score > PlayerPrefs.GetInt("highScore", 0))
+        {
+            PlayerPrefs.SetInt("highScore", GameManager.score);
+            PlayerPrefs.Save();
+        }
     }
 
     public void QuitGame()
