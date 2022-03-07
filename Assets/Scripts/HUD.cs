@@ -76,8 +76,9 @@ public class HUD : MonoBehaviour
 
     public void TryAgain()
     {
-        SceneManager.LoadScene(1);
         GameManager.gameOver = false;
         GameManager.snowballs = 50;
+        GameManager.score = 0;
+        SceneManager.LoadScene(1);
     }
 }
